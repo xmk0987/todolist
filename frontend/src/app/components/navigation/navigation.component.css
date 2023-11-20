@@ -1,0 +1,33 @@
+.navbar{
+    width: 100%;
+    background-color: black;
+    height: 50px;
+    display: inline-flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+}
+
+.navlogo{
+    margin-left: 0.5rem;
+}
+
+.navlinks{
+    display:flex;
+    justify-content: flex-end;
+    height: 100%;
+    align-items: center;
+}
+
+.navlinks li{
+    margin-right: 1rem;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+a:hover {
+    color: var(--nyan);
+}

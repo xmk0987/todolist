@@ -1,0 +1,29 @@
+<div class="loginSignupContainer">
+    <h2 class="formTitle">{{title}}</h2>
+    <div class="loginOrSignup">
+        <button class="chooseButton loginChoose" [class.glow]="getButtonClass(true)" (click)="toggleForms(true)">Login</button>
+        <button class="chooseButton signupChoose" [class.glow]="getButtonClass(false)" (click)="toggleForms(false)">Signup</button>
+    </div>
+    <form *ngIf="showSignupForm" [formGroup]="signupForm" (ngSubmit)="signup()" class="signup-form">
+        <div class="input-container">
+            <input type="text" class="signup-name" placeholder="Username" formControlName="name">
+        </div>
+        <div class="input-container">
+            <input type="email" class="signup-email" placeholder="Email" formControlName="email">
+        </div>
+        <div class="input-container">
+            <input type="password" class="signup-password" placeholder="Password" formControlName="password">
+        </div>
+        <button type="submit" [disabled]="!signupForm.valid" id="signupButton" class="signupbutton formbutton">Signup</button>
+    </form>
+
+    <form *ngIf="showLoginForm" [formGroup]="loginForm" (ngSubmit)="login()" class="login-form">
+        <div class="input-container">
+            <input type="email" class="login-email" placeholder="Email" formControlName="email">
+        </div>
+        <div class="input-container">
+            <input type="password" class="login-password" placeholder="Password" formControlName="password">
+        </div>
+        <button type="submit" id="loginButton" [disabled]="!loginForm.valid" class="loginbutton formbutton">Login</button>
+    </form>
+</div>
