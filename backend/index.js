@@ -1,5 +1,9 @@
 const express = require('express');
 
+require('dotenv').config();
+
+
+
 const bodyParser = require('body-parser');
 
 const authRoutes = require('./routes/auth');
@@ -7,6 +11,7 @@ const authRoutes = require('./routes/auth');
 const errorController = require('./controllers/error');
 
 const app = express();
+
 
 const ports = process.env.PORT || 3000;
 
