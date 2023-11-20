@@ -24,6 +24,7 @@
     border:none;
     font-weight: 600;
     transition: background-color 0.5s ease;
+    color: black;
 }
 
 .chooseButton:hover{
@@ -68,6 +69,8 @@
 .input-container input{
     height: 50px;
     width: 100%;
+    color:black;
+    text-align: center;
 }
 
 .input-container input::placeholder{
@@ -82,6 +85,7 @@
     background-color: var(--nyan);
     border: none;
     border-radius: 10px;
+    color:black;
 }
 
 .formbutton:not([disabled]):hover{

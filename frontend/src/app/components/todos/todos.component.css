@@ -1,0 +1,156 @@
+
+
+.todo-container{
+    height: 500px;
+    max-width: 485px;
+    background-color: rgba(84, 83, 83, 0.452);
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 10px;
+    box-shadow: 0px 0px 50px 5px var(--nyan);
+}
+
+
+.todoheader{
+    width: 100%;
+    background-color: rgba(0,0,0,0.6);
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+}
+
+.todoDate{
+    font-family: var(--header-font);
+    margin: 1rem;
+    font-size: 1.5rem;
+}
+
+.todos{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.todo{
+    width: 100%;
+    height: 50px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgba(9, 248, 249, 0.8);
+}
+
+.todo:nth-child(odd) .taskEdit{
+    background-color: white;
+    color: black;
+}
+
+.taskEdit{
+    margin-left: 1rem;
+    font-size: 1.2rem;
+    border:none;
+}
+
+.todo:nth-child(even) .taskEdit{
+    background-color: white;
+    color: black;
+}
+
+.todo:nth-child(even){
+    background-color: rgba(0,0,0,0.6);
+}
+
+.todo:nth-child(even) .task{
+    color: white;
+}
+
+.todoBtn:hover{
+    cursor: pointer;
+}
+
+.task:hover{
+    cursor: pointer;
+}
+
+.task-container{
+    width: 70%;
+}
+
+.task{
+    width: 80%;
+    height: 50px;
+    font-size: 1.2rem;
+    margin-bottom: 0;
+    margin-left: 1rem;
+    color:black;
+    overflow: scroll;
+    display:flex;
+    align-items: center;
+
+}
+
+
+.todoBtnContainer{
+    display: inline-flex;
+    justify-content: flex-end;
+    width: 30%;
+    margin-right: 1rem;
+}
+
+
+.todoBtn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left:0.2rem;
+}
+
+ion-icon{
+    color: black;
+    font-size: 1.5rem;
+}
+
+
+.flagged {
+    color:red;
+}
+
+
+.addTaskBtn{
+    color: black;
+}
+
+.todo.done .task{
+    text-decoration: line-through;
+}
+
+.addNewTask {
+    width: 100%;
+}
+
+.newTask {
+    width: 100%;
+    height: 50px;
+    font-size: 1.2rem;
+    color: black;
+    text-align: center;
+}
+
+.addTaskBtn{
+    width: 100%;
+    border: none;
+    height: 50px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    background-color: rgba(0,0,0,0.6);
+    color:white;
+    font-size: 1.2rem;
+
+}
+
+.addTaskBtn:hover{
+    cursor: pointer;
+}

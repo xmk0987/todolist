@@ -3,15 +3,16 @@ import { RouterModule, Routes } from '@angular/router';
 
 
 import { TodosComponent } from './components/todos/todos.component';
-import { HomeComponent } from './components/home/home.component';
 import { SignORloginComponent } from './components/sign-orlogin/sign-orlogin.component';
+import { LogoutComponent } from './components/logout/logout.component';
+
 
 const routes: Routes = [
-  { path:"", component: HomeComponent},
-  { path:"login", component: SignORloginComponent},
-  { path:"todos", component: TodosComponent},
-  { path:"**", redirectTo: ""},
-
+  { path: "login", component: SignORloginComponent },
+  { path: "todos", component: TodosComponent },
+  { path: "logout", component: LogoutComponent },
+  { path: "", redirectTo: "login", pathMatch: "full" },
+  { path: "**", redirectTo: "login" },
 ];
 
 @NgModule({

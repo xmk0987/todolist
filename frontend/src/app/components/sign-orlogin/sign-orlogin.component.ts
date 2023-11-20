@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from "@angular/forms"
+
+
 import { AuthService } from '../../services/auth.service';
 
 
@@ -12,10 +14,12 @@ export class SignORloginComponent implements OnInit{
   signupForm!: FormGroup;
   loginForm!: FormGroup;
 
-  title: string =  "SIGNUP";
+  signUpMessage = "";
 
-  showLoginForm: boolean = false;
-  showSignupForm: boolean = true;
+  title: string =  "LOGIN";
+
+  showLoginForm: boolean = true;
+  showSignupForm: boolean = false;
 
   constructor(private authService: AuthService) {}
 
@@ -39,7 +43,7 @@ export class SignORloginComponent implements OnInit{
 
   createSignupFormGroup(): FormGroup {
     return new FormGroup({
-      name: new FormControl("", [Validators.required, Validators.minLength(5)]),
+      name: new FormControl("", [Validators.required, Validators.minLength(3)]),
       email: new FormControl("", [Validators.required, Validators.email]),
       password: new FormControl("", [Validators.required, Validators.minLength(7)]),
     });
@@ -47,7 +51,12 @@ export class SignORloginComponent implements OnInit{
 
   signup(): void {
     console.log("Signup");
-    this.authService.signup(this.signupForm.value).subscribe((msg) => console.log(msg));
+    this.authService.signup(this.signupForm.value).subscribe((msg) => {
+      this.signUpMessage = "You can now login."
+    });
+    this.signupForm.reset();
+    this.toggleForms(true);
+
   }
 
 

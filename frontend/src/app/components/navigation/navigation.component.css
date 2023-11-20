@@ -13,6 +13,7 @@
 }
 
 .navlinks{
+    width: 100%;
     display:flex;
     justify-content: flex-end;
     height: 100%;
@@ -21,6 +22,7 @@
 
 .navlinks li{
     margin-right: 1rem;
+    list-style: none;
 }
 
 a {

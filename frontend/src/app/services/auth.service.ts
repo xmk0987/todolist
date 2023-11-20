@@ -18,7 +18,7 @@ export class AuthService {
   private url = "http://localhost:3000/auth";
 
   isUserLoggedIn$ = new BehaviorSubject<boolean>(false);
-  userId!: Pick<User, "id">;
+  userId?: Pick<User, "id">;
 
   httpOptions: { headers: HttpHeaders } = {
     headers: new HttpHeaders({ "Content-Type": "application/json"}),
@@ -56,5 +56,15 @@ export class AuthService {
           userId: Pick<User, "id"> 
         }>("login"))
     );
+  }
+
+
+  logout(): void{
+    localStorage.removeItem("token");
+
+    this.userId = undefined;
+    this.isUserLoggedIn$.next(false);
+
+    this.router.navigate(["login"]);
   }
 }

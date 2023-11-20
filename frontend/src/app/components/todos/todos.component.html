@@ -1,1 +1,29 @@
-<p>todos works!</p>
+
+<div class="todo-container">
+    <div class="todoheader">
+        <h1 class="todoDate">{{formattedDate}}</h1>
+    </div>
+    <div class="todos">
+        <div *ngFor="let todo of todos; let i = index;" class="todo" [ngClass]="{'done': todo.completed === true}">
+            <div class="task-container">
+                <p class="task" *ngIf="!todo.editing" (click)="toggleDone(i)">{{todo.content}}</p>
+                <input class="taskEdit" *ngIf="todo.editing" [(ngModel)]="todo.content" (blur)="saveTask(i)">
+            </div>
+            <div class="todoBtnContainer">
+                <button class="flag todoBtn" (click)="flagTask(i)">
+                    <ion-icon name="flag-outline" *ngIf="!todo.pinned"></ion-icon>
+                    <ion-icon name="flag" *ngIf="todo.pinned"></ion-icon>
+                </button>
+                <button class="edit todoBtn" (click)="editTask(i)"><ion-icon name="pencil-outline"></ion-icon></button>
+                <button class="remove todoBtn" (click)="removeTask(i)"><ion-icon name="trash-outline"></ion-icon></button>
+            </div>
+        </div>
+
+    </div>
+    <div class="addNewTask">
+        <input class="newTask" type="text" placeholder="New task" [(ngModel)]="newTask"/>
+        <button class="addTaskBtn" (click)="addTask()">
+            Add Task
+        </button>
+    </div>
+</div>
