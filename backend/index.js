@@ -8,6 +8,8 @@ const bodyParser = require('body-parser');
 
 const authRoutes = require('./routes/auth');
 
+const todoRouters = require('./routes/todos');
+
 const errorController = require('./controllers/error');
 
 const app = express();
@@ -34,6 +36,8 @@ app.use((req, res, next) => {
 });
 
 app.use('/auth', authRoutes);
+
+app.use('/todos', todoRouters);
 
 app.use(errorController.get404);
 

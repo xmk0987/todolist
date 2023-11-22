@@ -7,9 +7,6 @@ const User = require('../models/user');
 
 exports.signup = async (req, res, next) => {
   const errors = validationResult(req);
-  console.log(req.body.name);
-  console.log(errors.isEmpty());
-  console.log(errors);
 
   if (!errors.isEmpty()) {return};
 
