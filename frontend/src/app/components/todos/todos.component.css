@@ -12,7 +12,6 @@
     box-shadow: 0px 0px 50px 5px var(--nyan);
 }
 
-
 .todoheader{
     width: 100%;
     background-color: rgba(0,0,0,0.6);
@@ -34,7 +33,6 @@
     flex-direction: column;
     align-items: center;
     overflow: scroll;
-
 }
 
 .todo{
@@ -92,9 +90,7 @@
     overflow: scroll;
     display:flex;
     align-items: center;
-
 }
-
 
 .todoBtnContainer{
     display: inline-flex;
@@ -102,7 +98,6 @@
     width: 30%;
     margin-right: 1rem;
 }
-
 
 .todoBtn{
     display: flex;
@@ -116,18 +111,13 @@ ion-icon{
     font-size: 1.5rem;
 }
 
-
-.flagged {
-    color:red;
-}
-
-
 .addTaskBtn{
     color: black;
 }
 
 .todo.done .task{
     text-decoration: line-through;
+    text-decoration-thickness: 3px;
 }
 
 .addNewTask {
@@ -151,7 +141,6 @@ ion-icon{
     background-color: rgba(0,0,0,0.6);
     color:white;
     font-size: 1.2rem;
-
 }
 
 .addTaskBtn:hover{

@@ -5,6 +5,7 @@
         <button class="chooseButton signupChoose" [class.glow]="getButtonClass(false)" (click)="toggleForms(false)">Signup</button>
     </div>
     <form *ngIf="showSignupForm" [formGroup]="signupForm" (ngSubmit)="signup()" class="signup-form">
+        <p class="errorSignupMsg" [ngClass]="{'error': errorMessage}">{{signUpMessage}}</p>
         <div class="input-container">
             <input type="text" class="signup-name" placeholder="Username" formControlName="name">
         </div>
@@ -18,7 +19,7 @@
     </form>
 
     <form *ngIf="showLoginForm" [formGroup]="loginForm" (ngSubmit)="login()" class="login-form">
-        <p>{{signUpMessage}}</p>
+        <p class="successSignupMsg" [ngClass]="{'error': errorMessage}">{{loginMessage}}</p>
         <div class="input-container">
             <input type="email" class="login-email" placeholder="Email" formControlName="email">
         </div>

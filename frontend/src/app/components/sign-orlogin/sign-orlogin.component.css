@@ -35,13 +35,11 @@
 .loginChoose{
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
-
 }
 
 .signupChoose{
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
-
 }
 
 .formTitle{
@@ -63,7 +61,6 @@
 .input-container{
     margin: 0rem 1rem 0.5rem 1rem;
     width: 100%;
-
 }
 
 .input-container input{
@@ -93,6 +90,9 @@
     cursor: pointer;
 }
 
+.formbutton:disabled{
+    background-color: grey;
+}
 
 .glow {
     background-color: var(--nyan);
@@ -103,3 +103,14 @@
     cursor:default;
 }
 
+.errorSignupMsg {
+    color: red;
+}
+
+.successSignupMsg {
+    color: green;
+}
+
+.error {
+    color: red;
+}

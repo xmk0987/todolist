@@ -15,6 +15,8 @@ export class SignORloginComponent implements OnInit{
   loginForm!: FormGroup;
 
   signUpMessage = "";
+  loginMessage = "";
+  errorMessage = false;
 
   title: string =  "LOGIN";
 
@@ -50,15 +52,26 @@ export class SignORloginComponent implements OnInit{
   }
 
   signup(): void {
-    console.log("Signup");
-    this.authService.signup(this.signupForm.value).subscribe((msg) => {
-      this.signUpMessage = "You can now login."
-    });
-    this.signupForm.reset();
-    this.toggleForms(true);
-
+    this.authService.signup(this.signupForm.value).subscribe(
+      (response) => {
+        this.errorMessage = false;
+        this.loginMessage = "You can now login";
+        this.signUpMessage = "";
+        this.toggleForms(true);
+        this.signupForm.reset();
+        this.loginForm.reset();
+      },
+      (error) => {
+        if (error.validationErrors) {
+          this.errorMessage = true;
+          this.signUpMessage = error.validationErrors[0];
+        } else {
+          this.signUpMessage = "Something went wrong";
+          console.error('Signup Error:', error);
+        }
+      }
+    );
   }
-
 
   createLoginFormGroup(): FormGroup {
     return new FormGroup({
@@ -67,7 +80,22 @@ export class SignORloginComponent implements OnInit{
     });
   }
   
-  login(): void{
-    this.authService.login(this.loginForm.value.email, this.loginForm.value.password).subscribe();
+  login(): void {
+    this.authService.login(this.loginForm.value.email, this.loginForm.value.password).subscribe(
+      (tokenObject) => {
+        // Login succesful
+        this.errorMessage = false;
+      },
+      (error) => {
+        // Login error
+        this.errorMessage = true;
+        if (error && error.error && error.error.message) {
+          this.loginMessage = error.error.message;
+        } else {
+          this.loginMessage = 'An unknown error occurred.';
+        }
+        console.error('Login Error:', error);
+      }
+    );
   }
 }

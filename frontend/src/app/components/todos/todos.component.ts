@@ -55,7 +55,6 @@ export class TodosComponent implements OnInit{
 
       this.todoService.createTodo(newTaskObject).subscribe(
         (response) => {
-          console.log('Todo created successfully:', response);
           this.getTasks();
 
         },
@@ -72,7 +71,6 @@ export class TodosComponent implements OnInit{
   getTasks(): void{
     this.todoService.getTasks(this.userId).subscribe(
       (response) => {
-        console.log('Todos retrieved successfully:', response);
         this.todos = response.todos;
       },
       (error) => {
@@ -85,7 +83,6 @@ export class TodosComponent implements OnInit{
     const todoId = this.todos[index].id;
     this.todoService.deleteTodo(todoId).subscribe(
       (response) => {
-        console.log('Todo deleted successfully:', response);
         this.getTasks();
       },
       (error) => {
@@ -95,7 +92,6 @@ export class TodosComponent implements OnInit{
   }
 
   editTask(id: number): void{
-    console.log(this.todos[id].content);
     this.todos[id].editing = true;
   }
 
@@ -113,14 +109,12 @@ export class TodosComponent implements OnInit{
   toggleDone (id: number):void {
     const newContent = !this.todos[id].completed;
     this.updateTask(id, {"completed": newContent});
-    console.log(this.todos[id].completed);
   }
 
   updateTask(todoIndex: number, updates: { [key:string]: any }): void{
     const todoId = this.todos[todoIndex].id;
     this.todoService.updateTodo(todoId, updates).subscribe(
       (response) => {
-        console.log('Task updated successfully:', response);
         this.getTasks();
 
       },
