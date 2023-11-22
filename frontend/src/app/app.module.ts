@@ -1,12 +1,12 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { BrowserModule } from "@angular/platform-browser";
+import { NgModule } from "@angular/core";
+import { ReactiveFormsModule } from "@angular/forms";
+import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
+import { FormsModule } from '@angular/forms';
 
-
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-
+import { AppRoutingModule } from "./app-routing.module";
+import { AppComponent } from "./app.component";
+import { NoopAnimationsModule } from "@angular/platform-browser/animations";
 
 import { NavigationComponent } from './components/navigation/navigation.component';
 import { TodosComponent } from './components/todos/todos.component';
@@ -14,6 +14,9 @@ import { SignORloginComponent } from './components/sign-orlogin/sign-orlogin.com
 import { LogoutComponent } from './components/logout/logout.component';
 
 import { IonicModule } from '@ionic/angular';
+
+import { AuthInterceptorService } from './services/auth-interceptor.service';
+
 
 
 @NgModule({
@@ -27,14 +30,19 @@ import { IonicModule } from '@ionic/angular';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule,
+    NoopAnimationsModule,
     ReactiveFormsModule,
-    IonicModule.forRoot(),
-    HttpClientModule
+    HttpClientModule,
+    IonicModule,
+    FormsModule
   ],
   providers: [
-    provideClientHydration()
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptorService,
+      multi: true,
+    },
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

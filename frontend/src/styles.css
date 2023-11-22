@@ -22,7 +22,11 @@ body{
     background-image: url('../backgrounds/city1.jpg');
     background-position: center;
     background-size: cover;
+    overflow: auto;
     
 }
-html, body { height: 100%; }
+html, body { 
+    height: 100%;
+    overflow:hidden;
+}
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

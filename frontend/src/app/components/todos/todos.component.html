@@ -4,7 +4,7 @@
         <h1 class="todoDate">{{formattedDate}}</h1>
     </div>
     <div class="todos">
-        <div *ngFor="let todo of todos; let i = index;" class="todo" [ngClass]="{'done': todo.completed === true}">
+        <div *ngFor="let todo of todos; let i = index;" class="todo" [ngClass]="{'done': todo.completed}">
             <div class="task-container">
                 <p class="task" *ngIf="!todo.editing" (click)="toggleDone(i)">{{todo.content}}</p>
                 <input class="taskEdit" *ngIf="todo.editing" [(ngModel)]="todo.content" (blur)="saveTask(i)">

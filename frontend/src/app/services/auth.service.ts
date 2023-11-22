@@ -18,7 +18,7 @@ export class AuthService {
   private url = "http://localhost:3000/auth";
 
   isUserLoggedIn$ = new BehaviorSubject<boolean>(false);
-  userId?: Pick<User, "id">;
+  userId!: Pick<User, "id">;
 
   httpOptions: { headers: HttpHeaders } = {
     headers: new HttpHeaders({ "Content-Type": "application/json"}),
@@ -37,8 +37,10 @@ export class AuthService {
     );
   }
 
-  login(email: Pick<User, "email">, password: Pick<User, "password">): Observable<{
-    token: string; userId: Pick<User, "id"> 
+  login(email: Pick<User, "email">, 
+        password: Pick<User, "password">): 
+        Observable<{
+        token: string; userId: Pick<User, "id"> 
   }> {
     return this.http
       .post<{ token: string; userId: Pick<User, "id"> }>(`${this.url}/login`, { email, password }, this.httpOptions)
@@ -46,6 +48,8 @@ export class AuthService {
         first(),
         tap((tokenObject: { token: string; userId: Pick<User, "id"> }) => {
           this.userId = tokenObject.userId;
+          console.log("in auth service");
+          console.log(this.userId);
           localStorage.setItem("token", tokenObject.token);
           this.isUserLoggedIn$.next(true);
           this.router.navigate(["todos"]);
@@ -61,10 +65,7 @@ export class AuthService {
 
   logout(): void{
     localStorage.removeItem("token");
-
-    this.userId = undefined;
     this.isUserLoggedIn$.next(false);
-
     this.router.navigate(["login"]);
   }
 }
