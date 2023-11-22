@@ -1,10 +1,8 @@
-
 const Todo = require('../models/todo');
 
 
 exports.gettodos = async (req, res, next) => {
     const userId = req.query.userId;
-    console.log(userId);
 
     try{
         const todos = await Todo.findUsersTodos(userId);
@@ -19,7 +17,6 @@ exports.gettodos = async (req, res, next) => {
         }));
 
         // Send the todos back to the client
-        console.log(sanitizedTodos);
         res.status(201).json({ message: 'Todos retrieved', todos: sanitizedTodos });
 
     }  catch(err){
@@ -32,8 +29,6 @@ exports.gettodos = async (req, res, next) => {
 
 
 exports.addtodos = async (req, res, next) => {
-    console.log("Tullaa controllerii");
-    console.log(req.body);
     const todo = {
         userId: req.body.userId,
         content: req.body.content,

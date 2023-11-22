@@ -14,8 +14,6 @@ module.exports = class Todo {
   }
 
   static addTodo(todo) {
-    console.log("Tullaa serveriinki");
-    console.log(todo);
     return db.execute(
       'INSERT INTO todos (userId, content, completed, pinned, editing) VALUES (?, ?, ?, ?, ?)',
       [todo.userId, todo.content, todo.completed, todo.pinned, todo.editing]

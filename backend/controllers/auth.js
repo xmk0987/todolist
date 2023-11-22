@@ -5,16 +5,18 @@ const jwt = require('jsonwebtoken');
 
 const User = require('../models/user');
 
+
 exports.signup = async (req, res, next) => {
   const errors = validationResult(req);
 
-  if (!errors.isEmpty()) {return};
+  if (!errors.isEmpty()) {
+    const errorMessages = errors.array().map((error) => error.msg);
+    return res.status(400).json({ errors: errorMessages });
+  }
 
   const name = req.body.name;
   const email = req.body.email;
   const password = req.body.password;
-
-  console.log(name);
 
   try {
     const hashedPassword = await bcrypt.hash(password, 12);
@@ -46,9 +48,11 @@ exports.login = async (req, res, next) => {
     const user = await User.find(email);
 
     if (user[0].length !== 1) {
-      const error = new Error('A user with this email could not be found.');
-      error.statusCode = 401;
-      throw error;
+      return res.status(404).json({
+        error: {
+          message: 'A user with this email could not be found.',
+        },
+      });
     }
 
     const storedUser = user[0][0];
@@ -56,9 +60,11 @@ exports.login = async (req, res, next) => {
     const isEqual = await bcrypt.compare(password, storedUser.password);
 
     if (!isEqual) {
-      const error = new Error('Wrong password!');
-      error.statusCode = 401;
-      throw error;
+      return res.status(401).json({
+        error: {
+          message: 'Wrong password!',
+        },
+      });
     }
 
     const token = jwt.sign(
@@ -67,7 +73,7 @@ exports.login = async (req, res, next) => {
         userId: storedUser.id
       },
       'secretfortoken', 
-      { expiresIn: '1h' }
+      { expiresIn: '2h' }
     );
 
     res.status(200).json({ token: token, userId: storedUser.id });
