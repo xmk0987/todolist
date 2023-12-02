@@ -9,7 +9,7 @@ import { User } from "../models/User";
   providedIn: 'root'
 })
 export class TodoService {
-  private url = "http://onlinetodolist.onrender.com/todos";
+  private url = "https://onlinetodolist-kfg5.onrender.com/todos";
   //private url = "http://localhost:3000/todos";
 
   httpOptions: { headers: HttpHeaders } = {

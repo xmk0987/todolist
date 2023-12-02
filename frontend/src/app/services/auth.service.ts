@@ -16,7 +16,7 @@ import { User } from "../models/User"
   providedIn: 'root'
 })
 export class AuthService {
-  private url = "https://onlinetodolist.onrender.com/auth";
+  private url = "https://onlinetodolist-kfg5.onrender.com/auth";
   //private url = "http://localhost:3000/auth";
 
   // Use localStorage to persist the authentication state and token separately
