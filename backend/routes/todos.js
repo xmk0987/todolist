@@ -18,7 +18,6 @@ router.post(
     todoController.addtodos
 );
 
-
 router.get(
     '/gettodos',
     [
@@ -28,7 +27,6 @@ router.get(
     todoController.gettodos
 );
 
-
 router.delete(
     '/deletetodo', 
     [
@@ -37,7 +35,6 @@ router.delete(
     ],
     todoController.deletetodos
 )
-
 
 router.put(
     '/updatetodo',
