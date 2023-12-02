@@ -52,7 +52,6 @@ export class SignORloginComponent implements OnInit{
   }
 
   signup(): void {
-    console.log("Eka vaihe signup");
     this.authService.signup(this.signupForm.value).subscribe(
       (response) => {
         this.errorMessage = false;
@@ -68,7 +67,6 @@ export class SignORloginComponent implements OnInit{
           this.signUpMessage = error.validationErrors[0];
         } else {
           this.signUpMessage = "Something went wrong";
-          console.error('Signup Error:', error);
         }
       }
     );
@@ -95,7 +93,6 @@ export class SignORloginComponent implements OnInit{
         } else {
           this.loginMessage = 'An unknown error occurred.';
         }
-        console.error('Login Error:', error);
       }
     );
   }
