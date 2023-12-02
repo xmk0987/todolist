@@ -8,11 +8,11 @@ module.exports = class User {
   }
 
   static find(email) {
-    return db.promise().query('SELECT * FROM users WHERE email = ?', [email]);
+    return db.execute('SELECT * FROM users WHERE email = ?', [email]);
   }
 
   static save(user) {
-    return db.promise().query(
+    return db.execute(
       'INSERT INTO users (name, email, password) VALUES (?, ?, ?)',
       [user.name, user.email, user.password]
     );
