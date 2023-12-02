@@ -1,0 +1,2 @@
+import './polyfills.server.mjs';
+import{a as i}from"./chunk-Q3FRKMLN.mjs";var t=function(e){return e.Unimplemented="UNIMPLEMENTED",e.Unavailable="UNAVAILABLE",e}(t||{}),o=function(e){return e.Body="body",e.Ionic="ionic",e.Native="native",e.None="none",e}(o||{}),a={getEngine(){let e=i();if(e?.isPluginAvailable("Keyboard"))return e.Plugins.Keyboard},getResizeMode(){let e=this.getEngine();return e?.getResizeMode?e.getResizeMode().catch(n=>{if(n.code!==t.Unimplemented)throw n}):Promise.resolve(void 0)}};export{o as a,a as b};
