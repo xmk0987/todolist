@@ -34,7 +34,7 @@
     align-items: center;
     overflow: scroll;
     -ms-overflow-style: none;
-    scrollbar-width: none;
+    scrollbar-width: none; 
 }
 
 .todos::-webkit-scrollbar {
