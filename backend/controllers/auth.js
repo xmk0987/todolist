@@ -7,7 +7,7 @@ const User = require('../models/user');
 
 
 exports.signup = async (req, res, next) => {
-  checkConnection();
+  console.log("Tullaa signuppii");
   const errors = validationResult(req);
 
   if (!errors.isEmpty()) {

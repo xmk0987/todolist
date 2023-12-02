@@ -52,6 +52,7 @@ export class SignORloginComponent implements OnInit{
   }
 
   signup(): void {
+    console.log("Eka vaihe signup");
     this.authService.signup(this.signupForm.value).subscribe(
       (response) => {
         this.errorMessage = false;
