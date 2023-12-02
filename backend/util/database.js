@@ -8,4 +8,17 @@ const pool = mysql.createPool({
   password: process.env.SQLPASS,
 });
 
-module.exports = pool.promise();
+const checkConnection = async () => {
+  const promisePool = pool.promise();
+
+  try {
+    await promisePool.ping();
+    console.log('MySQL connection is active.');
+  } catch (error) {
+    console.error('Error pinging MySQL server:', error);
+  } finally {
+    promisePool.end(); 
+  }
+};
+
+module.exports = { pool, checkConnection };

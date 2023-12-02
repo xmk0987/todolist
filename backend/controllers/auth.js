@@ -1,5 +1,5 @@
 const { validationResult } = require('express-validator');
-
+const { checkConnection } = require('../util/database');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
@@ -7,6 +7,7 @@ const User = require('../models/user');
 
 
 exports.signup = async (req, res, next) => {
+  checkConnection();
   const errors = validationResult(req);
 
   if (!errors.isEmpty()) {

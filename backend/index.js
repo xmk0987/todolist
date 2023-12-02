@@ -27,7 +27,6 @@ app.use((req, res, next) => {
 const path2 = express.static(path.join(__dirname, '..', 'frontend', 'dist', 'frontend', 'browser'));
 app.use(path2);
 
-console.log(path2);
 // Api routes
 app.use('/auth', authRoutes);
 app.use('/todos', todoRoutes);
