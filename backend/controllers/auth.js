@@ -85,3 +85,25 @@ exports.login = async (req, res, next) => {
     next(err);
   }
 }
+
+
+exports.deleteUser = async (req, res, next) => {
+  try {
+    const userId = parseInt(req.query.userId, 10);
+
+    if (isNaN(userId)) {
+      const error = new Error('Invalid userId');
+      error.statusCode = 422; // Unprocessable Entity
+      throw error;
+    }
+
+    const result = await User.removeUser(userId);
+
+    res.status(201).json({ message: 'User removed' });
+  } catch (err) {
+    if (!err.statusCode) {
+      err.statusCode = 500;
+    }
+    next(err);
+  }
+};

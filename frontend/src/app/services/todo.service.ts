@@ -10,6 +10,10 @@ import { User } from "../models/User";
 })
 export class TodoService {
   private url = "https://onlinetodolist-kfg5.onrender.com/todos";
+  private deleteUrl = "https://onlinetodolist-kfg5.onrender.com/auth"
+
+  //private url = "http://localhost:3000/todos";
+  //private deleteUrl = "http://localhost:3000/auth";
 
   httpOptions: { headers: HttpHeaders } = {
     headers: new HttpHeaders({ "Content-Type": "application/json"}),
@@ -68,6 +72,19 @@ export class TodoService {
       updates,
       { headers}
       );
+  }
+
+
+  removeUser(userId: Pick<User, "id">): Observable<any> {
+    const token = window.localStorage.getItem("token");
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+
+    return this.http.delete<any>(
+      `${this.deleteUrl}/deleteuser?userId=${userId}`, 
+      { headers}
+    );
   }
 
 }

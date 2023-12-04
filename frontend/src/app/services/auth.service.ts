@@ -17,6 +17,7 @@ import { User } from "../models/User"
 })
 export class AuthService {
   private url = "https://onlinetodolist-kfg5.onrender.com/auth";
+  //private url = "http://localhost:3000/auth";
 
   // Use localStorage to persist the authentication state and token separately
   private storageKey = 'authData';
@@ -119,8 +120,11 @@ export class AuthService {
 
   logout(): void {
     // Remove authData and authToken from localStorage on logout
-    localStorage.removeItem(this.storageKey);
-    localStorage.removeItem('token');
+    if (typeof localStorage !== 'undefined') {
+      // Remove authData and authToken from localStorage on logout
+      localStorage.removeItem(this.storageKey);
+      localStorage.removeItem('token');
+    }
 
     this.authData = null;
     this.authToken = null;

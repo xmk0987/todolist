@@ -1,12 +1,14 @@
 const express = require('express');
 
-const { body } = require('express-validator');
+const { body , query } = require('express-validator');
 
 const router = express.Router();
 
 const User = require('../models/user');
 
 const authController = require('../controllers/auth');
+const auth = require('../middleware/auth');
+
 
 router.post(
   '/signup',
@@ -28,5 +30,14 @@ router.post(
 );
 
 router.post('/login', authController.login);
+
+router.delete(
+  '/deleteuser', 
+  [
+    auth,
+    query('userId').trim().notEmpty(),
+  ],
+  authController.deleteUser
+)
 
 module.exports = router;

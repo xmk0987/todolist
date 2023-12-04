@@ -142,15 +142,40 @@ ion-icon{
     width: 100%;
     border: none;
     height: 50px;
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
     background-color: rgba(0,0,0,0.6);
     color:white;
     font-size: 1.2rem;
 }
 
-.addTaskBtn:hover{
+.addTaskBtn:hover, .deleteUserBtn:hover{
     cursor: pointer;
+}
+
+.addTaskBtn:active{
+    background-color: white;
+}
+
+.deleteUserBtn:hover{
+    background-color: rgba(255,0,0,0.3);
+}
+
+.deleteUser{
+    opacity: 1;
+    width: 100%;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.deleteUserBtn{
+    width: 100%;
+    border: none;
+    height: 50px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    background-color: rgba(255,0,0,1);
+    color:white;
+    font-size: 1.2rem;
+    opacity: 1;
 }
 
 @media only screen and (max-width: 600px){

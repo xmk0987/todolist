@@ -6,6 +6,7 @@ import { TodoService } from '../../services/todo.service';
 
 import { User } from '../../models/User';
 import { Todo } from '../../models/Todo';
+import { response } from 'express';
 
 
 @Component({
@@ -124,4 +125,19 @@ export class TodosComponent implements OnInit{
     );
   }
 
+  removeUser(): void{
+    if (confirm("Are you sure?")){
+      console.log("tulee tähä");
+      const userId = this.userId;
+      this.todoService.removeUser(userId).subscribe(
+        (response) => {
+          console.log("User deleted");
+          window.location.href = '/logout';
+        },
+        (error) => {
+          console.error('Error deleting user:', error);
+        }
+      );
+    }
+  }
 }

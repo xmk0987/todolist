@@ -17,4 +17,21 @@ module.exports = class User {
       [user.name, user.email, user.password]
     );
   }
+
+  static removeUser(userId) {
+      // Delete user
+      const deleteUserQuery = 'DELETE FROM users WHERE id = ?';
+      const deleteUserParams = [userId];
+  
+      // Delete todos associated with the user
+      const deleteTodosQuery = 'DELETE FROM todos WHERE userId = ?';
+      const deleteTodosParams = [userId];
+  
+      // Execute queries separately
+      return Promise.all([
+          db.execute(deleteUserQuery, deleteUserParams),
+          db.execute(deleteTodosQuery, deleteTodosParams)
+      ]);
+  }
+
 };
