@@ -60,13 +60,19 @@ export class SignORloginComponent implements OnInit{
         this.toggleForms(true);
         this.signupForm.reset();
         this.loginForm.reset();
+        this.resetErrorMsg()
+
       },
       (error) => {
         if (error.validationErrors) {
           this.errorMessage = true;
           this.signUpMessage = error.validationErrors[0];
+          this.resetErrorMsg()
+
         } else {
           this.signUpMessage = "Something went wrong";
+          this.resetErrorMsg()
+
         }
       }
     );
@@ -90,10 +96,20 @@ export class SignORloginComponent implements OnInit{
         this.errorMessage = true;
         if (error && error.error && error.error.message) {
           this.loginMessage = error.error.message;
+          this.resetErrorMsg()
+
         } else {
           this.loginMessage = 'An unknown error occurred.';
+          this.resetErrorMsg()
         }
       }
     );
+  }
+
+  resetErrorMsg(): void{
+    setTimeout(() => {
+      this.loginMessage = "";
+      this.signUpMessage = "";
+    },4000)
   }
 }
