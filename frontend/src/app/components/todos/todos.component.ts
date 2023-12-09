@@ -45,6 +45,17 @@ export class TodosComponent implements OnInit{
     this.getTasks();
   }
 
+  sortTodos(): void{
+    this.todos = this.todos.sort((a, b) => {
+      if (a.pinned && !b.pinned) {
+        return -1; 
+      } else if (!a.pinned && b.pinned) {
+        return 1;
+      } else {
+        return 0; 
+      }
+    });
+  }
 
 // Adding task to database and resetting list
   addTask(): void {
@@ -73,6 +84,7 @@ export class TodosComponent implements OnInit{
     this.todoService.getTasks(this.userId).subscribe(
       (response) => {
         this.todos = response.todos;
+        this.sortTodos();
       },
       (error) => {
         console.error('Error retrieving todo:', error);
@@ -127,11 +139,9 @@ export class TodosComponent implements OnInit{
 
   removeUser(): void{
     if (confirm("Are you sure?")){
-      console.log("tulee tähä");
       const userId = this.userId;
       this.todoService.removeUser(userId).subscribe(
         (response) => {
-          console.log("User deleted");
           window.location.href = '/logout';
         },
         (error) => {
