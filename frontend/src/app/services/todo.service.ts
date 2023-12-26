@@ -9,8 +9,8 @@ import { User } from "../models/User";
   providedIn: 'root'
 })
 export class TodoService {
-  private url = "https://onlinetodolist-kfg5-0u8u.onrender.com/todos";
-  private deleteUrl = "https://onlinetodolist-kfg5-0u8u.onrender.com/auth"
+  private url = "https://https://onlinetodolist-z6qc.onrender.com/todos";
+  private deleteUrl = "https://https://onlinetodolist-z6qc.onrender.com/auth"
 
   //private url = "http://localhost:3000/todos";
   //private deleteUrl = "http://localhost:3000/auth";
